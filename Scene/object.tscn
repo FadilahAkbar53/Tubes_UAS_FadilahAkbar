@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://c75hwediilqqs"]
+
+[ext_resource type="PackedScene" uid="uid://cbb6krd35qarg" path="res://Assets/Objects/Hoewa_Forsteriana_FBX/hoewa_Forsteriana.fbx" id="1_qra11"]
+[ext_resource type="PackedScene" uid="uid://cmdu2terjklij" path="res://Assets/Objects/Hoewa_Forsteriana_FBX/hoewa_Forsteriana_2.fbx" id="2_sjlxq"]
+[ext_resource type="PackedScene" uid="uid://duko8kiajurgo" path="res://Assets/Objects/Matteuccia_Struthiopteris_FBX/matteucia_struthiopteris_1.fbx" id="3_ng0nc"]
+[ext_resource type="PackedScene" uid="uid://ye1ulrfd6b02" path="res://Assets/Objects/Gledista_Triacanthos_FBX/Gledista_Triacanthos.fbx" id="4_aw0ht"]
+[ext_resource type="PackedScene" uid="uid://csrukj5e2lt44" path="res://Assets/Objects/Gledista_Triacanthos_FBX/Gledista_Triacanthos_4.fbx" id="5_fi2er"]
+[ext_resource type="PackedScene" uid="uid://cgtqe72anmgea" path="res://Assets/Objects/EXPORT_9_VIKING_HOUSES_PACK/viking_house_002/mesh/highpoly_viking_house_002.fbx" id="6_k2vge"]
+
+[node name="Object" type="Node3D"]
+
+[node name="hoewa_Forsteriana" parent="." instance=ExtResource("1_qra11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.4186, 85.5828, 95.6127)
+
+[node name="hoewa_Forsteriana_2" parent="." instance=ExtResource("2_sjlxq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3153, -64.6672, 82.4625)
+
+[node name="hoewa_Forsteriana2" parent="." instance=ExtResource("1_qra11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104, 160, 214)
+
+[node name="matteucia_struthiopteris_1" parent="." instance=ExtResource("3_ng0nc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 197.09, 191.524, 198.861)
+
+[node name="Tree1M" parent="." instance=ExtResource("4_aw0ht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 275.902, 192.342, 197.696)
+
+[node name="Gledista_Triacanthos_4" parent="." instance=ExtResource("5_fi2er")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.89, 180.934, 245.257)
+
+[node name="highpoly_viking_house_002" parent="." instance=ExtResource("6_k2vge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.071, 259.279, 88.2186)

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bkl2e0myxbd2u"
+path="res://.godot/imported/lowpoly_viking_house_004.obj-357dd108217b2486ba4853479b8cccd1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/lowpoly_viking_house_004.obj-357dd108217b2486ba4853479b8cccd1.mesh"]
+
+source_file="res://Assets/Objects/EXPORT_9_VIKING_HOUSES_PACK/viking_house_004/mesh/lowpoly_viking_house_004.obj"
+dest_files=["res://.godot/imported/lowpoly_viking_house_004.obj-357dd108217b2486ba4853479b8cccd1.mesh", "res://.godot/imported/lowpoly_viking_house_004.obj-357dd108217b2486ba4853479b8cccd1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

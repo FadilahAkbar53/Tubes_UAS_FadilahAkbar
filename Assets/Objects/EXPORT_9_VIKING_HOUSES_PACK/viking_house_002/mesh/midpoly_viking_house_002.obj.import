@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bpmc7adjh6ump"
+path="res://.godot/imported/midpoly_viking_house_002.obj-47d3220ae8f2ae4926d502109fdec576.mesh"
+
+[deps]
+
+files=["res://.godot/imported/midpoly_viking_house_002.obj-47d3220ae8f2ae4926d502109fdec576.mesh"]
+
+source_file="res://Assets/Objects/EXPORT_9_VIKING_HOUSES_PACK/viking_house_002/mesh/midpoly_viking_house_002.obj"
+dest_files=["res://.godot/imported/midpoly_viking_house_002.obj-47d3220ae8f2ae4926d502109fdec576.mesh", "res://.godot/imported/midpoly_viking_house_002.obj-47d3220ae8f2ae4926d502109fdec576.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

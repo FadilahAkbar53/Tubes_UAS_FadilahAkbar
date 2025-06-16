@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://82ywidelwgsw"]
+
+[ext_resource type="PackedScene" uid="uid://dkngfc1panus6" path="res://Assets/Objects/Matteuccia_Struthiopteris_FBX/matteucia_struthiopteris_2.fbx" id="1_lxlm5"]
+
+[node name="matteucia_struthiopteris_2" instance=ExtResource("1_lxlm5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
