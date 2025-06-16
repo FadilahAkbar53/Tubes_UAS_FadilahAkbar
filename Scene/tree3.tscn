@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8eev3k0pqatw"]
+
+[ext_resource type="PackedScene" uid="uid://ye1ulrfd6b02" path="res://Assets/Objects/Gledista_Triacanthos_FBX/Gledista_Triacanthos.fbx" id="1_pkf7t"]
+
+[node name="Gledista_Triacanthos" instance=ExtResource("1_pkf7t")]
+
+[node name="Gleditsia_triacanthos_v01_m01" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.62921e-07, 0, 1.62921e-07, 1, 0, 0, 0)

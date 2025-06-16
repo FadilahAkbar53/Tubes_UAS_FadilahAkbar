@@ -1,30 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb2lp50sjndus"]
+[gd_scene load_steps=8 format=3 uid="uid://bb2lp50sjndus"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vibap"]
-sky_top_color = Color(0.192157, 0.282353, 0.509804, 1)
-sky_horizon_color = Color(0.505882, 0.615686, 0.709804, 1)
-ground_bottom_color = Color(0.211765, 0.313726, 0.552941, 1)
-ground_horizon_color = Color(0.505882, 0.615686, 0.709804, 1)
-ground_curve = 0.13
+[ext_resource type="Shader" path="res://Assets/Sky/clouds.gdshader" id="1_yemgo"]
+[ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://Assets/Sky/perlworlnoise.tga" id="2_bjqt2"]
+[ext_resource type="Texture2D" uid="uid://dfkye0uf4i6w1" path="res://Assets/Sky/weather.bmp" id="3_2v1m3"]
+[ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://Assets/Sky/worlnoise.bmp" id="4_fe7mf"]
 
-[sub_resource type="Sky" id="Sky_srg7c"]
-sky_material = SubResource("ProceduralSkyMaterial_vibap")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0pm3i"]
+shader = ExtResource("1_yemgo")
+shader_parameter/wind_direction = Vector2(1, 0)
+shader_parameter/wind_speed = 5.843
+shader_parameter/_density = 0.022
+shader_parameter/cloud_coverage = 0.257
+shader_parameter/_time_offset = 23.0
+shader_parameter/rayleigh = 2.0
+shader_parameter/rayleigh_color = Color(0.26, 0.41, 0.58, 1)
+shader_parameter/mie = 0.005
+shader_parameter/mie_eccentricity = 0.8
+shader_parameter/mie_color = Color(0.63, 0.77, 0.92, 1)
+shader_parameter/turbidity = 10.0
+shader_parameter/sun_disk_scale = 1.0
+shader_parameter/ground_color = Color(1, 1, 1, 1)
+shader_parameter/exposure = 0.1
+shader_parameter/worlnoise = ExtResource("4_fe7mf")
+shader_parameter/perlworlnoise = ExtResource("2_bjqt2")
+shader_parameter/weathermap = ExtResource("3_2v1m3")
 
-[sub_resource type="Environment" id="Environment_8jcgm"]
+[sub_resource type="Sky" id="Sky_d2p6u"]
+sky_material = SubResource("ShaderMaterial_0pm3i")
+
+[sub_resource type="Environment" id="Environment_723dq"]
 background_mode = 2
-sky = SubResource("Sky_srg7c")
-ambient_light_source = 3
-ambient_light_color = Color(0.55, 0.55, 0.55, 1)
-ambient_light_sky_contribution = 0.3
-tonemap_mode = 3
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0gcl0"]
+sky = SubResource("Sky_d2p6u")
 
 [node name="Environment" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_8jcgm")
-camera_attributes = SubResource("CameraAttributesPractical_0gcl0")
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_723dq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)

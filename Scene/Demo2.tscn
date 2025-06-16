@@ -1,12 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0eeuhkg0itya"]
+[gd_scene load_steps=18 format=3 uid="uid://d0eeuhkg0itya"]
 
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://demo/components/Environment.tscn" id="3_7yll5"]
 [ext_resource type="PackedScene" uid="uid://dwnhqfjq7v1pq" path="res://demo/components/Borders.tscn" id="4_kextt"]
-[ext_resource type="PackedScene" uid="uid://domhm87hbhbg1" path="res://demo/components/Player.tscn" id="7_cx71o"]
 [ext_resource type="PackedScene" uid="uid://b3j8anjslpyn0" path="res://Assets/Objects/EXPORT_9_VIKING_HOUSES_PACK/viking_house_003/mesh/highpoly_viking_house_003.fbx" id="7_ojfce"]
 [ext_resource type="Terrain3DAssets" uid="uid://dal3jhw6241qg" path="res://demo/data/assets.tres" id="7_riash"]
 [ext_resource type="PackedScene" uid="uid://do55xdccaigtq" path="res://Assets/Objects/EXPORT_9_VIKING_HOUSES_PACK/viking_house_006/mesh/highpoly_viking_house_006.fbx" id="11_f03hy"]
+[ext_resource type="PackedScene" uid="uid://byx2ldau86f6i" path="res://Scene/Player1.tscn" id="11_u6hd4"]
+[ext_resource type="Script" path="res://Scripts/CameraFollow.cs" id="11_v1s1t"]
 [ext_resource type="PackedScene" uid="uid://b1wrqfnqtj562" path="res://Assets/Objects/EXPORT_9_VIKING_HOUSES_PACK/viking_house_007/mesh/highpoly_viking_house_007.fbx" id="12_o55cx"]
+[ext_resource type="Script" path="res://addons/waterways_net/RiverManager.cs" id="12_wi3w6"]
+[ext_resource type="Texture2D" uid="uid://b85tlq8wcklbo" path="res://addons/waterways_net/Textures/water_normal_bump.png" id="13_ntsfb"]
+[ext_resource type="Script" path="res://addons/waterways_net/Data/RiverShaderSettings.cs" id="14_73j3v"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -73,6 +77,43 @@ world_background = 2
 auto_shader = true
 dual_scaling = true
 
+[sub_resource type="Resource" id="Resource_s4m0t"]
+script = ExtResource("14_73j3v")
+MatShaderType = 1
+mat_albedo_color_first = Color(0.6, 0.7, 0.65, 1)
+mat_albedo_color_second = Color(0.25, 0.35, 0.35, 1)
+mat_albedo_depth = 10.0
+mat_albedo_depth_curve = 0.25
+mat_transparency_clarity = 10.0
+mat_transparency_depth_curve = 0.25
+mat_transparency_refraction = 0.05
+mat_normal_scale = 1.0
+mat_normal_bump_texture = ExtResource("13_ntsfb")
+mat_flow_speed = 1.0
+mat_flow_base = 0.0
+mat_flow_steepness = 2.0
+mat_flow_distance = 1.0
+mat_flow_pressure = 1.0
+mat_flow_max = 4.0
+mat_foam_color = Color(0.9, 0.9, 0.9, 1)
+mat_foam_amount = 2.0
+mat_foam_steepness = 2.0
+mat_foam_smoothness = 0.3
+mat_uv_scale = Vector3(1, 1, 1)
+mat_roughness = 0.2
+mat_edge_fade = 0.25
+LodLod0Distance = 50.0
+_selectedShader = 1
+
+[sub_resource type="Curve3D" id="Curve3D_j8y5a"]
+resource_local_to_scene = true
+bake_interval = 0.05
+_data = {
+"points": PackedVector3Array(1.02405, 0.724927, -3.62335, -1.02405, -0.724927, 3.62335, 19.8939, 4.68344, -19.1548, 2.90399, 7.11061, -0.605286, -2.90399, -7.11061, 0.605286, 14.2271, -17.1988, 33.2667, -0.160699, -0.955264, -3.6696, 0.160699, 0.955264, 3.6696, 12.7445, -18.8767, 47.6437, 1.10815, 0.469442, -2.54192, -1.10815, -0.469442, 2.54192, 9.4501, -19.6671, 58.9723, 0.341552, -0.125112, -1.88662, -0.341552, 0.125112, 1.88662, 7.46487, -19.8772, 66.0762, 4.44555, 0.179555, -4.41491, -4.44555, -0.179555, 4.41491, -10.0174, -21.7292, 84.5593, 3.70528, 0.239295, -5.12698, -3.70528, -0.239295, 5.12698, -24.9929, -20.5522, 103.831, 3.94683, -0.239453, -5.65972, -3.94683, 0.239453, 5.65972, -40.8252, -20.6982, 127.414, 3.51887, -0.415217, -5.59601, -3.51887, 0.415217, 5.59601, -55.3516, -19.8682, 149.233, 5.1596, -0.366295, -7.621, -5.1596, 0.366295, 7.621, -76.3415, -19.0468, 179.865, 4.0418, -0.559749, -0.0353776, -4.0418, 0.559749, 0.0353776, -90.9999, -17.9538, 187.347, 2.83544, 0.101187, -1.72463, -2.83544, -0.101187, 1.72463, -102.922, -17.1491, 192.613, 5.6082, 0.58538, -3.05235, -5.6082, -0.58538, 3.05235, -124.777, -16.39, 204.685, 6.87353, 0.0147285, -1.32001, -6.87353, -0.0147285, 1.32001, -152.349, -19.9209, 212.142, 5.81833, 0.460661, -1.24941, -5.81833, -0.460661, 1.24941, -177.701, -15.7465, 209.656, 3.3505, -1.0645, 0.285659, -3.3505, 1.0645, -0.285659, -189.625, -19.1203, 217.555, 3.50226, -0.353685, -0.24536, -3.50226, 0.353685, 0.24536, -203.57, -16.986, 218.011, 3.45056, 0.934249, 0.452089, -3.45056, -0.934249, -0.452089, -217.713, -19.5133, 216.862, 3.85732, -0.53475, 3.90587, -3.85732, 0.53475, -3.90587, -234.649, -18.578, 202.755, 5.94884, 0.508602, 4.38549, -5.94884, -0.508602, -4.38549, -257.966, -19.707, 184.503),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 20
+
 [node name="Demo" type="Node3D"]
 
 [node name="Environment" parent="." instance=ExtResource("3_7yll5")]
@@ -101,4 +142,26 @@ transform = Transform3D(4.92034, 0, -0.888945, 0, 5, 0, 0.888945, 0, 4.92034, 31
 [node name="highpoly_viking_house_007" parent="HouseVillage" instance=ExtResource("12_o55cx")]
 transform = Transform3D(-4.87688, 0, -1.10272, 0, 5, 0, 1.10272, 0, -4.87688, 471.555, 48.3803, 398.588)
 
-[node name="Player" parent="." instance=ExtResource("7_cx71o")]
+[node name="RiverManager" type="Node3D" parent="."]
+transform = Transform3D(-0.751402, 0, -0.659844, 0, 1, 0, 0.659844, 0, -0.751402, 630.575, 17.6311, 457.898)
+script = ExtResource("12_wi3w6")
+ShaderSettings = SubResource("Resource_s4m0t")
+ShapeStepLengthDivs = 2
+ShapeStepWidthDivs = 3
+ShapeSmoothness = 0.224
+PointWidths = [18.8831, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 21.7153, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941]
+Curve = SubResource("Curve3D_j8y5a")
+
+[node name="CameraRig" type="Node3D" parent="."]
+transform = Transform3D(-0.963677, 0, -0.26707, 0, 1, 0, 0.26707, 0, -0.963677, 1.44652, 0.828502, 0)
+script = ExtResource("11_v1s1t")
+TargetPath = NodePath("../Player1")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraRig"]
+transform = Transform3D(1, 0, 0, 0, 0.999848, -0.0174524, 0, 0.0174524, 0.999848, 0, 3, 2)
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig/SpringArm3D"]
+
+[node name="Player1" parent="." instance=ExtResource("11_u6hd4")]
+transform = Transform3D(-0.261832, 0, 2.98855, 0, 3, 0, -2.98855, 0, -0.261832, 317.018, 20.5041, 342.51)
+CameraRigPath = NodePath("../CameraRig")
