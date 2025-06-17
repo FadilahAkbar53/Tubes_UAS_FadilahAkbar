@@ -1,0 +1,379 @@
+[gd_scene load_steps=24 format=3 uid="uid://xhr51ichdlri"]
+
+[ext_resource type="Script" path="res://Scripts/SettingManager.cs" id="1_mm0rb"]
+[ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://demo/components/Environment.tscn" id="1_xnw40"]
+[ext_resource type="Terrain3DAssets" uid="uid://dal3jhw6241qg" path="res://demo/data/assets.tres" id="3_8i2y6"]
+[ext_resource type="Script" path="res://addons/waterways_net/RiverManager.cs" id="7_fnbgh"]
+[ext_resource type="PackedScene" uid="uid://dakkgwksqucvd" path="res://Scene/house/Hvillage3.tscn" id="7_v04m3"]
+[ext_resource type="PackedScene" uid="uid://dcs7wo2rwdu86" path="res://Scene/house/Hvillage1.tscn" id="7_voiib"]
+[ext_resource type="PackedScene" uid="uid://8nwifyun8g0h" path="res://Scene/house/Hvillage2.tscn" id="8_83nl7"]
+[ext_resource type="Texture2D" uid="uid://b85tlq8wcklbo" path="res://addons/waterways_net/Textures/water_normal_bump.png" id="8_uen30"]
+[ext_resource type="Script" path="res://addons/waterways_net/Data/RiverShaderSettings.cs" id="9_ufydf"]
+[ext_resource type="Script" path="res://Scripts/CameraFollow.cs" id="10_8wvmp"]
+[ext_resource type="Script" path="res://Scripts/ObstacleDamage.cs" id="11_co46j"]
+[ext_resource type="PackedScene" uid="uid://byx2ldau86f6i" path="res://Scene/Player1.tscn" id="11_stjn7"]
+[ext_resource type="Script" path="res://Scripts/ButtonRestart.cs" id="11_wlp6b"]
+[ext_resource type="Script" path="res://Scripts/ButtonExit.cs" id="12_ue7vt"]
+[ext_resource type="PackedScene" uid="uid://cwcugqwbtojhk" path="res://Scene/item.tscn" id="14_xrk1w"]
+
+[sub_resource type="Gradient" id="Gradient_vr1m7"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d8lcj"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bov7h"]
+seamless = true
+color_ramp = SubResource("Gradient_vr1m7")
+noise = SubResource("FastNoiseLite_d8lcj")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_jrc01"]
+_shader_parameters = {
+"_mouse_layer": 2147483648,
+"auto_base_texture": 0,
+"auto_height_reduction": 0.0,
+"auto_overlay_texture": 1,
+"auto_slope": 1.0,
+"bias_distance": 512.0,
+"blend_sharpness": 0.87,
+"depth_blur": 0.0,
+"dual_scale_far": 170.0,
+"dual_scale_near": 100.0,
+"dual_scale_reduction": 0.3,
+"dual_scale_texture": 0,
+"enable_macro_variation": true,
+"enable_projection": true,
+"height_blending": true,
+"macro_variation1": Color(0.855, 0.8625, 0.9, 1),
+"macro_variation2": Color(0.9, 0.885, 0.81, 1),
+"macro_variation_slope": 0.333,
+"mipmap_bias": 1.0,
+"noise1_angle": 0.1,
+"noise1_offset": Vector2(0.5, 0.5),
+"noise1_scale": 0.04,
+"noise2_scale": 0.076,
+"noise3_scale": 0.225,
+"noise_texture": SubResource("NoiseTexture2D_bov7h"),
+"projection_angular_division": 1.0,
+"projection_threshold": 0.8,
+"tri_scale_reduction": 0.3,
+"world_space_normal_blend": true
+}
+world_background = 0
+auto_shader = true
+dual_scaling = true
+
+[sub_resource type="Resource" id="Resource_5h817"]
+script = ExtResource("9_ufydf")
+MatShaderType = 1
+mat_albedo_color_first = Color(0.6, 0.7, 0.65, 1)
+mat_albedo_color_second = Color(0.25, 0.35, 0.35, 1)
+mat_albedo_depth = 10.0
+mat_albedo_depth_curve = 0.25
+mat_transparency_clarity = 10.0
+mat_transparency_depth_curve = 0.25
+mat_transparency_refraction = 0.05
+mat_normal_scale = 1.0
+mat_normal_bump_texture = ExtResource("8_uen30")
+mat_flow_speed = 1.0
+mat_flow_base = 0.0
+mat_flow_steepness = 2.0
+mat_flow_distance = 1.0
+mat_flow_pressure = 1.0
+mat_flow_max = 4.0
+mat_foam_color = Color(0.9, 0.9, 0.9, 1)
+mat_foam_amount = 2.0
+mat_foam_steepness = 2.0
+mat_foam_smoothness = 0.3
+mat_uv_scale = Vector3(1, 1, 1)
+mat_roughness = 0.2
+mat_edge_fade = 0.25
+LodLod0Distance = 50.0
+_selectedShader = 1
+
+[sub_resource type="Curve3D" id="Curve3D_j0mbo"]
+resource_local_to_scene = true
+bake_interval = 0.05
+_data = {
+"points": PackedVector3Array(1.02405, 0.724927, -3.62335, -1.02405, -0.724927, 3.62335, 19.8939, 4.68344, -19.1548, 2.90399, 7.11061, -0.605286, -2.90399, -7.11061, 0.605286, 14.2271, -17.1988, 33.2667, -0.160699, -0.955264, -3.6696, 0.160699, 0.955264, 3.6696, 12.7445, -18.8767, 47.6437, 1.10815, 0.469442, -2.54192, -1.10815, -0.469442, 2.54192, 9.4501, -19.6671, 58.9723, 0.341552, -0.125112, -1.88662, -0.341552, 0.125112, 1.88662, 7.46487, -19.8772, 66.0762, 4.44555, 0.179555, -4.41491, -4.44555, -0.179555, 4.41491, -10.0174, -21.7292, 84.5593, 3.70528, 0.239295, -5.12698, -3.70528, -0.239295, 5.12698, -24.9929, -20.5522, 103.831, 3.94683, -0.239453, -5.65972, -3.94683, 0.239453, 5.65972, -40.8252, -20.6982, 127.414, 3.51887, -0.415217, -5.59601, -3.51887, 0.415217, 5.59601, -55.3516, -19.8682, 149.233, 5.1596, -0.366295, -7.621, -5.1596, 0.366295, 7.621, -76.3415, -19.0468, 179.865, 4.0418, -0.559749, -0.0353776, -4.0418, 0.559749, 0.0353776, -90.9999, -17.9538, 187.347, 2.83544, 0.101187, -1.72463, -2.83544, -0.101187, 1.72463, -102.922, -17.1491, 192.613, 5.6082, 0.58538, -3.05235, -5.6082, -0.58538, 3.05235, -124.777, -16.39, 204.685, 6.87353, 0.0147285, -1.32001, -6.87353, -0.0147285, 1.32001, -152.349, -19.9209, 212.142, 5.81833, 0.460661, -1.24941, -5.81833, -0.460661, 1.24941, -177.701, -15.7465, 209.656, 3.3505, -1.0645, 0.285659, -3.3505, 1.0645, -0.285659, -189.625, -19.1203, 217.555, 3.50226, -0.353685, -0.24536, -3.50226, 0.353685, 0.24536, -203.57, -16.986, 218.011, 3.45056, 0.934249, 0.452089, -3.45056, -0.934249, -0.452089, -217.713, -19.5133, 216.862, 3.85732, -0.53475, 3.90587, -3.85732, 0.53475, -3.90587, -234.649, -18.578, 202.755, 5.94884, 0.508602, 4.38549, -5.94884, -0.508602, -4.38549, -257.966, -19.707, 184.503),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 20
+
+[sub_resource type="BoxMesh" id="BoxMesh_wrc0m"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cerj3"]
+data = PackedVector3Array(-1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1)
+
+[node name="Demo" type="Node3D"]
+script = ExtResource("1_mm0rb")
+InventoryPanelPath = NodePath("UI/InventoryPanel")
+InfoPanelPath = NodePath("UI/infoPanel")
+
+[node name="Environment" parent="." instance=ExtResource("1_xnw40")]
+transform = Transform3D(-0.124775, -0.0271156, 0.991815, 0.744267, 0.658487, 0.111635, -0.656124, 0.752104, -0.0619813, 0, 0, 0)
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+data_directory = "res://Terrain/Level1"
+material = SubResource("Terrain3DMaterial_jrc01")
+assets = ExtResource("3_8i2y6")
+collision_mask = 3
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="HouseVillage" type="Node" parent="."]
+
+[node name="Hvillage3" parent="HouseVillage" instance=ExtResource("7_v04m3")]
+transform = Transform3D(4.92098, 0, -0.885424, 0, 5, 0, 0.885424, 0, 4.92098, 313.414, 20.566, 304.577)
+
+[node name="Hvillage1" parent="HouseVillage" instance=ExtResource("7_voiib")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 303.179, 20.429, 341.38)
+
+[node name="Hvillage4" parent="HouseVillage" instance=ExtResource("8_83nl7")]
+transform = Transform3D(-4.87767, 0, -1.09923, 0.0372313, 4.99713, -0.165209, 1.0986, -0.169352, -4.87487, 471.555, 47.8544, 398.588)
+
+[node name="RiverManager" type="Node3D" parent="."]
+transform = Transform3D(-0.751402, 0, -0.659844, 0, 1, 0, 0.659844, 0, -0.751402, 630.575, 17.6311, 457.898)
+script = ExtResource("7_fnbgh")
+ShaderSettings = SubResource("Resource_5h817")
+ShapeStepLengthDivs = 2
+ShapeStepWidthDivs = 3
+ShapeSmoothness = 0.224
+PointWidths = [18.8831, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 21.7153, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941]
+Curve = SubResource("Curve3D_j0mbo")
+
+[node name="CameraRig" type="Node3D" parent="."]
+transform = Transform3D(-0.963677, 0, -0.26707, 0, 1, 0, 0.26707, 0, -0.963677, 1.44652, 0.828502, 0)
+script = ExtResource("10_8wvmp")
+TargetPath = NodePath("../Player1")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraRig"]
+transform = Transform3D(1, 0, 0, 0, 0.999848, -0.0174524, 0, 0.0174524, 0.999848, 0, 3, 2)
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig/SpringArm3D"]
+
+[node name="Player1" parent="." instance=ExtResource("11_stjn7")]
+transform = Transform3D(-0.261832, 0, 2.98855, 0, 3, 0, -2.98855, 0, -0.261832, 446.13, 45.8379, 386.175)
+CameraRigPath = NodePath("../CameraRig")
+GameOverUIPath = NodePath("../UI/GameOver")
+SpringArmPath = NodePath("../CameraRig/SpringArm3D")
+ItemInfoPanelPath = NodePath("../UI/ItemInfoPanel")
+InventoryNodePath = NodePath("..")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 16.0
+offset_right = 5.0
+offset_bottom = 16.0
+
+[node name="HealthBar" type="ProgressBar" parent="UI/HealthBar"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 43.0
+offset_right = 332.0
+offset_bottom = 76.0
+value = 100.0
+
+[node name="Label" type="Label" parent="UI/HealthBar"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 2.0
+offset_right = 274.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 24
+text = "Arka SangPetualang"
+
+[node name="GameOver" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 141.0
+offset_top = 108.0
+offset_right = 1040.0
+offset_bottom = 581.0
+
+[node name="Label" type="Label" parent="UI/GameOver"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -221.5
+offset_top = 58.0
+offset_right = 234.5
+offset_bottom = 173.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 84
+text = "Game Over"
+
+[node name="ButtonRestart" type="Button" parent="UI/GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = -5.5
+offset_right = 58.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Restart"
+script = ExtResource("11_wlp6b")
+
+[node name="ButtonExit" type="Button" parent="UI/GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = 53.0
+offset_right = 67.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.00142836
+theme_override_font_sizes/font_size = 24
+text = "Exit Game"
+script = ExtResource("12_ue7vt")
+
+[node name="ItemInfoPanel" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 56.0
+offset_top = 117.0
+offset_right = 356.0
+offset_bottom = 177.0
+
+[node name="ItemNameLabel" type="Label" parent="UI/ItemInfoPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="InventoryPanel" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 178.0
+offset_right = 341.0
+offset_bottom = 449.0
+
+[node name="Label" type="Label" parent="UI/InventoryPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.0
+offset_right = 62.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 18
+text = "-- INVENTORY -- "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InventoryPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -133.5
+offset_right = 245.0
+offset_bottom = -56.5
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/InventoryPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="Label2" type="Label" parent="UI/InventoryPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="Label3" type="Label" parent="UI/InventoryPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="infoPanel" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -253.0
+offset_bottom = 431.0
+grow_horizontal = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/infoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 44.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "-- INFORMAS --
+
+~ Kontrol Game ~
+W = Maju
+A = Kiri
+S = Mundur
+D = Kanan
+Mouse = Gerak Kamera
+F = Ambil Item
+Tab = Inventory
+I = Tampilkan Info
+"
+
+[node name="ObstacleDamage" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 446.574, 47.1723, 391.4)
+script = ExtResource("11_co46j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ObstacleDamage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4931)
+mesh = SubResource("BoxMesh_wrc0m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleDamage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4931)
+shape = SubResource("ConcavePolygonShape3D_cerj3")
+
+[node name="Item" parent="." instance=ExtResource("14_xrk1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 465.886, 50.6919, 375.63)
+ItemName = "Kris Pajajaran"
+
+[node name="Item4" parent="." instance=ExtResource("14_xrk1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 465.886, 50.6919, 365.679)
+ItemName = "Kris Pajajaran"
+
+[node name="Item5" parent="." instance=ExtResource("14_xrk1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460.323, 50.6919, 375.63)
+ItemName = "Kris Pajajaran"
+
+[node name="Item6" parent="." instance=ExtResource("14_xrk1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460.323, 50.6919, 375.63)
+ItemName = "Kris Pajajaran"
+
+[node name="Item2" parent="." instance=ExtResource("14_xrk1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 465.886, 50.6919, 370.63)
+ItemName = "dupa"
+
+[node name="Item3" parent="." instance=ExtResource("14_xrk1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 521.784, 34.1138, 554.572)
+ItemName = "dupa"

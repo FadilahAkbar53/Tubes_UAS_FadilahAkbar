@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dakkgwksqucvd"]
+
+[ext_resource type="PackedScene" uid="uid://do55xdccaigtq" path="res://Assets/Objects/EXPORT_9_VIKING_HOUSES_PACK/viking_house_006/mesh/highpoly_viking_house_006.fbx" id="1_hmala"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5lmv8"]
+size = Vector3(5.5, 2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_16qps"]
+size = Vector3(2, 2, 6)
+
+[node name="Hvillage3" instance=ExtResource("1_hmala")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="219"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08781, 0)
+shape = SubResource("BoxShape3D_5lmv8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03039, 1.21936, 0)
+shape = SubResource("BoxShape3D_16qps")

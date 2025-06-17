@@ -77,7 +77,7 @@ world_background = 2
 auto_shader = true
 dual_scaling = true
 
-[sub_resource type="Resource" id="Resource_s4m0t"]
+[sub_resource type="Resource" id="Resource_etpcb"]
 script = ExtResource("14_73j3v")
 MatShaderType = 1
 mat_albedo_color_first = Color(0.6, 0.7, 0.65, 1)
@@ -105,7 +105,7 @@ mat_edge_fade = 0.25
 LodLod0Distance = 50.0
 _selectedShader = 1
 
-[sub_resource type="Curve3D" id="Curve3D_j8y5a"]
+[sub_resource type="Curve3D" id="Curve3D_yl82w"]
 resource_local_to_scene = true
 bake_interval = 0.05
 _data = {
@@ -145,12 +145,12 @@ transform = Transform3D(-4.87688, 0, -1.10272, 0, 5, 0, 1.10272, 0, -4.87688, 47
 [node name="RiverManager" type="Node3D" parent="."]
 transform = Transform3D(-0.751402, 0, -0.659844, 0, 1, 0, 0.659844, 0, -0.751402, 630.575, 17.6311, 457.898)
 script = ExtResource("12_wi3w6")
-ShaderSettings = SubResource("Resource_s4m0t")
+ShaderSettings = SubResource("Resource_etpcb")
 ShapeStepLengthDivs = 2
 ShapeStepWidthDivs = 3
 ShapeSmoothness = 0.224
 PointWidths = [18.8831, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 21.7153, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941]
-Curve = SubResource("Curve3D_j8y5a")
+Curve = SubResource("Curve3D_yl82w")
 
 [node name="CameraRig" type="Node3D" parent="."]
 transform = Transform3D(-0.963677, 0, -0.26707, 0, 1, 0, 0.26707, 0, -0.963677, 1.44652, 0.828502, 0)
