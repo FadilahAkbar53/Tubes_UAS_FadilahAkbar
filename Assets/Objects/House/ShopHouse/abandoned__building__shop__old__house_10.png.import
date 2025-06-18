@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cklsd5j8w8eg"
+path.s3tc="res://.godot/imported/abandoned__building__shop__old__house_10.png-d2d4da2d949babe84368e6983e15d0f2.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "367644c232ae63130b6bec3161264c60"
+}
+
+[deps]
+
+source_file="res://Assets/Objects/House/ShopHouse/abandoned__building__shop__old__house_10.png"
+dest_files=["res://.godot/imported/abandoned__building__shop__old__house_10.png-d2d4da2d949babe84368e6983e15d0f2.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=8
+roughness/src_normal="res://Assets/Objects/house/ShopHouse/abandoned__building__shop__old__house_11.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

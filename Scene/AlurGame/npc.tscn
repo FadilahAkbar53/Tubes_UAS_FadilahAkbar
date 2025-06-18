@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7n3hp5n7ynk7"]
+
+[ext_resource type="Script" path="res://Scripts/NPCScript.cs" id="1_mraux"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_707my"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_btt1g"]
+
+[node name="NPC" type="Area3D"]
+script = ExtResource("1_mraux")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_707my")
+
+[node name="Label3D" type="Label3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_btt1g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]

@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://coqoblyrnn7em"]
+
+[ext_resource type="Script" path="res://Scene/AlurGame/MainMenu.cs" id="1_0y1xw"]
+[ext_resource type="Texture2D" uid="uid://cs0ahi6sbui30" path="res://Assets/Background/bg1.jpg" id="2_8ds8t"]
+[ext_resource type="FontFile" uid="uid://bxaswnq32w8fv" path="res://Assets/Font/Blank Script.otf" id="3_2v0wg"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0y1xw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 8.0
+offset_right = -3.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8ds8t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -484.0
+offset_top = -6.0
+offset_right = -86.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ButtonStart" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="ButtonCredit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Credit"
+
+[node name="ButtonHelp" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Help"
+
+[node name="ButtonExit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -505.0
+offset_top = 217.0
+offset_right = 297.0
+offset_bottom = 297.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_2v0wg")
+theme_override_font_sizes/font_size = 48
+text = "-- Petualangan Sang Penjelajah --"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -40.0
+offset_right = 94.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_2v0wg")
+theme_override_font_sizes/font_size = 24
+text = "FadilahAkbar-D42B"
+
+[connection signal="pressed" from="VBoxContainer/ButtonStart" to="." method="OnStartPressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonCredit" to="." method="OnCreditPressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonHelp" to="." method="OnHelpPressed"]

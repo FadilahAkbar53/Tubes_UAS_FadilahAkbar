@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://xhr51ichdlri"]
+[gd_scene load_steps=32 format=3 uid="uid://xhr51ichdlri"]
 
 [ext_resource type="Script" path="res://Scripts/SettingManager.cs" id="1_mm0rb"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://demo/components/Environment.tscn" id="1_xnw40"]
@@ -14,7 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://byx2ldau86f6i" path="res://Scene/Player1.tscn" id="11_stjn7"]
 [ext_resource type="Script" path="res://Scripts/ButtonRestart.cs" id="11_wlp6b"]
 [ext_resource type="Script" path="res://Scripts/ButtonExit.cs" id="12_ue7vt"]
-[ext_resource type="PackedScene" uid="uid://cwcugqwbtojhk" path="res://Scene/item.tscn" id="14_xrk1w"]
+[ext_resource type="PackedScene" uid="uid://bsgpvo56kyfd6" path="res://Assets/Objects/Trap/spike_trap_01.glb" id="15_6eg5h"]
+[ext_resource type="PackedScene" uid="uid://dv7fw0wtcntxv" path="res://Scene/Item/WayangArjuna.tscn" id="16_gla3h"]
+[ext_resource type="PackedScene" uid="uid://ds5kjonepiwfr" path="res://Scene/Item/GamelanSaron.tscn" id="17_215tj"]
+[ext_resource type="PackedScene" uid="uid://dpb42lf4xnevw" path="res://Scene/Item/kris_degger.tscn" id="17_lna8p"]
+[ext_resource type="PackedScene" uid="uid://c5dccap13yahy" path="res://Scene/PetunjukArah.tscn" id="18_je7gg"]
+[ext_resource type="Script" path="res://Scripts/NPCScript.cs" id="20_5t8e1"]
 
 [sub_resource type="Gradient" id="Gradient_vr1m7"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -73,7 +78,7 @@ world_background = 0
 auto_shader = true
 dual_scaling = true
 
-[sub_resource type="Resource" id="Resource_5h817"]
+[sub_resource type="Resource" id="Resource_at6lt"]
 script = ExtResource("9_ufydf")
 MatShaderType = 1
 mat_albedo_color_first = Color(0.6, 0.7, 0.65, 1)
@@ -101,7 +106,7 @@ mat_edge_fade = 0.25
 LodLod0Distance = 50.0
 _selectedShader = 1
 
-[sub_resource type="Curve3D" id="Curve3D_j0mbo"]
+[sub_resource type="Curve3D" id="Curve3D_tbyla"]
 resource_local_to_scene = true
 bake_interval = 0.05
 _data = {
@@ -115,6 +120,13 @@ size = Vector3(2, 2, 2)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cerj3"]
 data = PackedVector3Array(-1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b4r4v"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qcnvg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kttgx"]
 
 [node name="Demo" type="Node3D"]
 script = ExtResource("1_mm0rb")
@@ -146,12 +158,12 @@ transform = Transform3D(-4.87767, 0, -1.09923, 0.0372313, 4.99713, -0.165209, 1.
 [node name="RiverManager" type="Node3D" parent="."]
 transform = Transform3D(-0.751402, 0, -0.659844, 0, 1, 0, 0.659844, 0, -0.751402, 630.575, 17.6311, 457.898)
 script = ExtResource("7_fnbgh")
-ShaderSettings = SubResource("Resource_5h817")
+ShaderSettings = SubResource("Resource_at6lt")
 ShapeStepLengthDivs = 2
 ShapeStepWidthDivs = 3
 ShapeSmoothness = 0.224
 PointWidths = [18.8831, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 21.7153, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941]
-Curve = SubResource("Curve3D_j0mbo")
+Curve = SubResource("Curve3D_tbyla")
 
 [node name="CameraRig" type="Node3D" parent="."]
 transform = Transform3D(-0.963677, 0, -0.26707, 0, 1, 0, 0.26707, 0, -0.963677, 1.44652, 0.828502, 0)
@@ -165,7 +177,7 @@ spring_length = 2.0
 [node name="Camera3D" type="Camera3D" parent="CameraRig/SpringArm3D"]
 
 [node name="Player1" parent="." instance=ExtResource("11_stjn7")]
-transform = Transform3D(-0.261832, 0, 2.98855, 0, 3, 0, -2.98855, 0, -0.261832, 446.13, 45.8379, 386.175)
+transform = Transform3D(-0.261832, 0, 2.98855, 0, 3, 0, -2.98855, 0, -0.261832, 243.493, 2.02609, 83.2468)
 CameraRigPath = NodePath("../CameraRig")
 GameOverUIPath = NodePath("../UI/GameOver")
 SpringArmPath = NodePath("../CameraRig/SpringArm3D")
@@ -342,6 +354,53 @@ Tab = Inventory
 I = Tampilkan Info
 "
 
+[node name="DialogUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -189.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="UI/DialogUI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -164.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NextButton" type="Button" parent="UI/DialogUI/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Next"
+
+[node name="npcNameLabel" type="Label" parent="UI/DialogUI/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 7.0
+offset_right = 157.0
+offset_bottom = 34.0
+
+[node name="dialogText" type="RichTextLabel" parent="UI/DialogUI/Panel"]
+layout_mode = 0
+offset_top = 62.0
+offset_right = 710.0
+offset_bottom = 161.0
+
 [node name="ObstacleDamage" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 446.574, 47.1723, 391.4)
 script = ExtResource("11_co46j")
@@ -354,26 +413,49 @@ mesh = SubResource("BoxMesh_wrc0m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4931)
 shape = SubResource("ConcavePolygonShape3D_cerj3")
 
-[node name="Item" parent="." instance=ExtResource("14_xrk1w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 465.886, 50.6919, 375.63)
-ItemName = "Kris Pajajaran"
+[node name="ObstacleDamage2" type="Area3D" parent="."]
+transform = Transform3D(0.739114, 0, -0.67358, 0, 1, 0, 0.67358, 0, 0.739114, 361.041, 0.106984, 152.244)
+script = ExtResource("11_co46j")
 
-[node name="Item4" parent="." instance=ExtResource("14_xrk1w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 465.886, 50.6919, 365.679)
-ItemName = "Kris Pajajaran"
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleDamage2"]
+shape = SubResource("BoxShape3D_b4r4v")
 
-[node name="Item5" parent="." instance=ExtResource("14_xrk1w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460.323, 50.6919, 375.63)
-ItemName = "Kris Pajajaran"
+[node name="Sketchfab_Scene" parent="ObstacleDamage2" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="Item6" parent="." instance=ExtResource("14_xrk1w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460.323, 50.6919, 375.63)
-ItemName = "Kris Pajajaran"
+[node name="ItemCollected" type="Node3D" parent="."]
 
-[node name="Item2" parent="." instance=ExtResource("14_xrk1w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 465.886, 50.6919, 370.63)
-ItemName = "dupa"
+[node name="WayangArjuna" parent="ItemCollected" instance=ExtResource("16_gla3h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 472.393, 50.0549, 382.055)
+ItemName = "WayangArjuna"
 
-[node name="Item3" parent="." instance=ExtResource("14_xrk1w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 521.784, 34.1138, 554.572)
-ItemName = "dupa"
+[node name="KrisDegger" parent="ItemCollected" instance=ExtResource("17_lna8p")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 455.872, 48.0938, 369.771)
+ItemName = "Pusaka Kris Raja"
+
+[node name="GamelanSaron" parent="ItemCollected" instance=ExtResource("17_215tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 462.267, 48.2821, 364.687)
+ItemName = "Gamelan Saron"
+
+[node name="KumpulanObject" type="Node3D" parent="."]
+
+[node name="PetunjukArah" parent="KumpulanObject" instance=ExtResource("18_je7gg")]
+transform = Transform3D(0.374769, 0, 0.139815, 0, 0.4, 0, -0.139815, 0, 0.374769, 428.247, -0.602325, 205.772)
+
+[node name="PetunjukArah2" parent="KumpulanObject" instance=ExtResource("18_je7gg")]
+transform = Transform3D(-0.236225, 0, 0.322797, 0, 0.4, 0, -0.322797, 0, -0.236225, 428.601, 0.754368, 205.183)
+
+[node name="NPC_TetuaDesa" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 251.154, 3.23343, 85.9859)
+script = ExtResource("20_5t8e1")
+DialogUIPath = NodePath("../UI/DialogUI")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NPC_TetuaDesa"]
+mesh = SubResource("CapsuleMesh_qcnvg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC_TetuaDesa"]
+shape = SubResource("CapsuleShape3D_kttgx")
+
+[node name="Label3D" type="Label3D" parent="NPC_TetuaDesa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45583, 0)
+text = "Tetua Desa"

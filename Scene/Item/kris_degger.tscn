@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpb42lf4xnevw"]
+
+[ext_resource type="Script" path="res://Scripts/CollectibleItem.cs" id="1_i0sbt"]
+[ext_resource type="PackedScene" uid="uid://cksnry8qc7jip" path="res://Assets/Objects/KrisDegger/kris_dagger.glb" id="1_pwh64"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yidam"]
+size = Vector3(7, 2, 1)
+
+[node name="KrisDegger" type="Area3D"]
+script = ExtResource("1_i0sbt")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_pwh64")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 2.26886, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.392092, 0)
+shape = SubResource("BoxShape3D_yidam")

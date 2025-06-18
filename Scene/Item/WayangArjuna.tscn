@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv7fw0wtcntxv"]
+
+[ext_resource type="Script" path="res://Scripts/CollectibleItem.cs" id="1_diosb"]
+[ext_resource type="PackedScene" uid="uid://cdjsic5nmdvg2" path="res://Assets/Objects/arjuna-wayang-golek-theatre-puppet/source/21163_mek_Marionetka_Ardzuna.fbx" id="2_pyufq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_24ikc"]
+radius = 0.1
+height = 1.0
+
+[node name="WayangArjuna" type="Area3D"]
+script = ExtResource("1_diosb")
+
+[node name="21163_mek_Marionetka_Ardzuna" parent="." instance=ExtResource("2_pyufq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.425529, 0)
+shape = SubResource("CapsuleShape3D_24ikc")

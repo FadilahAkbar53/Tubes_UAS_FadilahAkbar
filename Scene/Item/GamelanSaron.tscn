@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds5kjonepiwfr"]
+
+[ext_resource type="Script" path="res://Scripts/CollectibleItem.cs" id="1_8q2da"]
+[ext_resource type="PackedScene" uid="uid://dmvyoi1lsxon1" path="res://Assets/Objects/Gamelan/saron.glb" id="1_qu2b0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yw75h"]
+size = Vector3(1.5, 0.5, 0.5)
+
+[node name="GamelanSaron" type="Area3D"]
+script = ExtResource("1_8q2da")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_qu2b0")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, -1.29213)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yw75h")

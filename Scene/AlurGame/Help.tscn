@@ -1,0 +1,92 @@
+[gd_scene load_steps=3 format=3 uid="uid://twfpterus55o"]
+
+[ext_resource type="Texture2D" uid="uid://c4wxnpbmfx8ky" path="res://Assets/Background/bg3.jpg" id="1_vfjao"]
+[ext_resource type="FontFile" uid="uid://bxaswnq32w8fv" path="res://Assets/Font/Blank Script.otf" id="2_15bjg"]
+
+[node name="Help" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vfjao")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 56.0
+offset_right = 328.0
+offset_bottom = 115.0
+theme_override_fonts/font = ExtResource("2_15bjg")
+theme_override_font_sizes/font_size = 48
+text = "Tujuan Permainan"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 248.0
+offset_right = 359.0
+offset_bottom = 307.0
+theme_override_fonts/font = ExtResource("2_15bjg")
+theme_override_font_sizes/font_size = 48
+text = "Kontrol Permainan"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 129.0
+offset_right = 1459.0
+offset_bottom = 204.0
+theme_override_font_sizes/font_size = 16
+text = "Dalam game ini, kamu berperan sebagai Arka, seorang arkeolog muda yang menjelajahi tempat-tempat budaya di Nusantara. Misi utamamu 
+adalah menemukan artefak bersejarah seperti gamelan Saron, wayang kuno, dan pusaka keris, sambil mempelajari kisah di balik warisan 
+leluhur yang hampir terlupakan."
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 313.0
+offset_right = 1460.0
+offset_bottom = 622.0
+theme_override_font_sizes/font_size = 16
+text = "W	 = Bergerak Maju
+A	= Bergerak ke Kiri
+S	= Bergerak Mundur
+D =	Bergerak ke Kanan
+Mouse =	Menggerakkan Kamera
+Space	= Melompat
+F	= Mengambil / Collect Item
+E	= Interaksi dengan NPC
+Tab	= Membuka / Menutup Inventory
+I	= Menampilkan Panel Informasi
+Enter = Lanjut Dialog (jika aktif)
+Esc	= Pause atau kembali ke menu"
+
+[node name="ButtonBack" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 258.0
+offset_top = 207.0
+offset_right = 403.0
+offset_bottom = 283.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Back"

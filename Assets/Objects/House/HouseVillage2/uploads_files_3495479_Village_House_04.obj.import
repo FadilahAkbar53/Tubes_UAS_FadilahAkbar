@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://baeqyeuv7ogsi"
+path="res://.godot/imported/uploads_files_3495479_Village_House_04.obj-19a09595d4b0904f61e4ba30d4bf2649.mesh"
+
+[deps]
+
+files=["res://.godot/imported/uploads_files_3495479_Village_House_04.obj-19a09595d4b0904f61e4ba30d4bf2649.mesh"]
+
+source_file="res://Assets/Objects/House/HouseVillage2/uploads_files_3495479_Village_House_04.obj"
+dest_files=["res://.godot/imported/uploads_files_3495479_Village_House_04.obj-19a09595d4b0904f61e4ba30d4bf2649.mesh", "res://.godot/imported/uploads_files_3495479_Village_House_04.obj-19a09595d4b0904f61e4ba30d4bf2649.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
