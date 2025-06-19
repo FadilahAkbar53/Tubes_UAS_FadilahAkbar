@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://k8biqho03u80"]
+
+[ext_resource type="Script" path="res://Scripts/BackToMenu.cs" id="1_k4rb5"]
+
+[node name="BackToMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_k4rb5")
+
+[node name="ButtonBack" type="Button" parent="."]
+layout_mode = 0
+offset_right = 77.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[connection signal="pressed" from="ButtonBack" to="." method="OnBackPressed"]

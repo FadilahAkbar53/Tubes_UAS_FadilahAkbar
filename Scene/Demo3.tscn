@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://xhr51ichdlri"]
+[gd_scene load_steps=30 format=3 uid="uid://xhr51ichdlri"]
 
 [ext_resource type="Script" path="res://Scripts/SettingManager.cs" id="1_mm0rb"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://demo/components/Environment.tscn" id="1_xnw40"]
@@ -78,7 +78,7 @@ world_background = 0
 auto_shader = true
 dual_scaling = true
 
-[sub_resource type="Resource" id="Resource_at6lt"]
+[sub_resource type="Resource" id="Resource_6ssk5"]
 script = ExtResource("9_ufydf")
 MatShaderType = 1
 mat_albedo_color_first = Color(0.6, 0.7, 0.65, 1)
@@ -106,7 +106,7 @@ mat_edge_fade = 0.25
 LodLod0Distance = 50.0
 _selectedShader = 1
 
-[sub_resource type="Curve3D" id="Curve3D_tbyla"]
+[sub_resource type="Curve3D" id="Curve3D_47oq8"]
 resource_local_to_scene = true
 bake_interval = 0.05
 _data = {
@@ -115,18 +115,12 @@ _data = {
 }
 point_count = 20
 
-[sub_resource type="BoxMesh" id="BoxMesh_wrc0m"]
-size = Vector3(2, 2, 2)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cerj3"]
-data = PackedVector3Array(-1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_b4r4v"]
-size = Vector3(1, 0.5, 1)
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_qcnvg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kttgx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b4r4v"]
+size = Vector3(1, 0.5, 1)
 
 [node name="Demo" type="Node3D"]
 script = ExtResource("1_mm0rb")
@@ -158,12 +152,12 @@ transform = Transform3D(-4.87767, 0, -1.09923, 0.0372313, 4.99713, -0.165209, 1.
 [node name="RiverManager" type="Node3D" parent="."]
 transform = Transform3D(-0.751402, 0, -0.659844, 0, 1, 0, 0.659844, 0, -0.751402, 630.575, 17.6311, 457.898)
 script = ExtResource("7_fnbgh")
-ShaderSettings = SubResource("Resource_at6lt")
+ShaderSettings = SubResource("Resource_6ssk5")
 ShapeStepLengthDivs = 2
 ShapeStepWidthDivs = 3
 ShapeSmoothness = 0.224
 PointWidths = [18.8831, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 21.7153, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941, 20.0941]
-Curve = SubResource("Curve3D_tbyla")
+Curve = SubResource("Curve3D_47oq8")
 
 [node name="CameraRig" type="Node3D" parent="."]
 transform = Transform3D(-0.963677, 0, -0.26707, 0, 1, 0, 0.26707, 0, -0.963677, 1.44652, 0.828502, 0)
@@ -177,7 +171,7 @@ spring_length = 2.0
 [node name="Camera3D" type="Camera3D" parent="CameraRig/SpringArm3D"]
 
 [node name="Player1" parent="." instance=ExtResource("11_stjn7")]
-transform = Transform3D(-0.261832, 0, 2.98855, 0, 3, 0, -2.98855, 0, -0.261832, 243.493, 2.02609, 83.2468)
+transform = Transform3D(1.66645, 0, 2.49458, 0, 3, 0, -2.49458, 0, 1.66645, 236.743, 2.02609, 36.6608)
 CameraRigPath = NodePath("../CameraRig")
 GameOverUIPath = NodePath("../UI/GameOver")
 SpringArmPath = NodePath("../CameraRig/SpringArm3D")
@@ -401,28 +395,6 @@ offset_top = 62.0
 offset_right = 710.0
 offset_bottom = 161.0
 
-[node name="ObstacleDamage" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 446.574, 47.1723, 391.4)
-script = ExtResource("11_co46j")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ObstacleDamage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4931)
-mesh = SubResource("BoxMesh_wrc0m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleDamage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4931)
-shape = SubResource("ConcavePolygonShape3D_cerj3")
-
-[node name="ObstacleDamage2" type="Area3D" parent="."]
-transform = Transform3D(0.739114, 0, -0.67358, 0, 1, 0, 0.67358, 0, 0.739114, 361.041, 0.106984, 152.244)
-script = ExtResource("11_co46j")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleDamage2"]
-shape = SubResource("BoxShape3D_b4r4v")
-
-[node name="Sketchfab_Scene" parent="ObstacleDamage2" instance=ExtResource("15_6eg5h")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-
 [node name="ItemCollected" type="Node3D" parent="."]
 
 [node name="WayangArjuna" parent="ItemCollected" instance=ExtResource("16_gla3h")]
@@ -446,8 +418,9 @@ transform = Transform3D(0.374769, 0, 0.139815, 0, 0.4, 0, -0.139815, 0, 0.374769
 transform = Transform3D(-0.236225, 0, 0.322797, 0, 0.4, 0, -0.322797, 0, -0.236225, 428.601, 0.754368, 205.183)
 
 [node name="NPC_TetuaDesa" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 251.154, 3.23343, 85.9859)
+transform = Transform3D(-0.971313, 0, -0.237804, 0, 1, 0, 0.237804, 0, -0.971313, 424.69, 1.3914, 203.872)
 script = ExtResource("20_5t8e1")
+NPCName = "Tetua Desa"
 DialogUIPath = NodePath("../UI/DialogUI")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NPC_TetuaDesa"]
@@ -459,3 +432,438 @@ shape = SubResource("CapsuleShape3D_kttgx")
 [node name="Label3D" type="Label3D" parent="NPC_TetuaDesa"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45583, 0)
 text = "Tetua Desa"
+
+[node name="NPC_PakAhmad" type="Area3D" parent="."]
+transform = Transform3D(-0.971313, 0, -0.237804, 0, 1, 0, 0.237804, 0, -0.971313, 258.543, 3.23343, 85.9859)
+script = ExtResource("20_5t8e1")
+NPCName = "Pak Ahmad"
+DialogUIPath = NodePath("../UI/DialogUI")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NPC_PakAhmad"]
+mesh = SubResource("CapsuleMesh_qcnvg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC_PakAhmad"]
+shape = SubResource("CapsuleShape3D_kttgx")
+
+[node name="Label3D" type="Label3D" parent="NPC_PakAhmad"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45583, 0)
+text = "Pak Ahmad"
+
+[node name="NPC_BuSari" type="Area3D" parent="."]
+transform = Transform3D(0.999815, 0, 0.019232, 0, 1, 0, -0.019232, 0, 0.999815, 257.643, 3.23343, 29.3245)
+script = ExtResource("20_5t8e1")
+NPCName = "Bu Sari"
+DialogUIPath = NodePath("../UI/DialogUI")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NPC_BuSari"]
+mesh = SubResource("CapsuleMesh_qcnvg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC_BuSari"]
+shape = SubResource("CapsuleShape3D_kttgx")
+
+[node name="Label3D" type="Label3D" parent="NPC_BuSari"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45583, 0)
+text = "Bu Sari
+"
+
+[node name="Rintangan" type="Node3D" parent="."]
+
+[node name="ObstacleDamage2" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.808349, 0, -0.588702, 0, 1, 0, 0.588702, 0, 0.808349, 363.601, 0.106984, 152.244)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage2"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage2" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage3" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.808349, 0, -0.588702, 0, 1, 0, 0.588702, 0, 0.808349, 363.409, 0.106984, 150.837)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage3"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage3" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage4" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.808349, 0, -0.588702, 0, 1, 0, 0.588702, 0, 0.808349, 363.678, 0.106984, 149.231)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage4"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage4" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage5" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.808349, 0, -0.588702, 0, 1, 0, 0.588702, 0, 0.808349, 363.486, 0.106984, 147.824)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage5"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage5" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage6" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.125022, 0, -0.992153, 0, 1, 0, 0.992153, 0, 0.125022, 333.841, 0.27136, 115.76)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage6"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage6" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage7" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.125022, 0, -0.992153, 0, 1, 0, 0.992153, 0, 0.125022, 334.734, 0.27136, 114.656)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage7"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage7" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage8" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.125022, 0, -0.992153, 0, 1, 0, 0.992153, 0, 0.125022, 336.088, 0.27136, 113.751)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage8"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage8" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage9" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.125022, 0, -0.992153, 0, 1, 0, 0.992153, 0, 0.125022, 336.982, 0.27136, 112.648)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage9"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage9" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage10" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 306.854, 0.27136, 102.946)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage10"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage10" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage11" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 307.221, 0.27136, 101.574)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage11"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage11" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage12" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 308.09, 0.27136, 100.197)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage12"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage12" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage13" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 308.457, 0.27136, 98.8252)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage13"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage13" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage14" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 304.489, 0.27136, 108.837)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage14"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage14" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage15" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 304.856, 0.27136, 107.466)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage15"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage15" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage16" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 305.725, 0.27136, 106.089)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage16"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage16" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage17" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 306.092, 0.27136, 104.717)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage17"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage17" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage26" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 322.115, 0.27136, 102.946)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage26"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage26" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage27" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 322.481, 0.27136, 101.574)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage27"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage27" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage28" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 323.351, 0.27136, 100.197)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage28"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage28" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage29" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 323.717, 0.27136, 98.8252)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage29"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage29" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage30" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 319.75, 0.27136, 108.837)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage30"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage30" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage31" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 320.117, 0.27136, 107.466)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage31"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage31" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage32" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 320.986, 0.27136, 106.089)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage32"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage32" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage33" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.517862, 0, -0.855463, 0, 1, 0, 0.855463, 0, 0.517862, 321.353, 0.27136, 104.717)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage33"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage33" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage34" type="Area3D" parent="Rintangan"]
+transform = Transform3D(-0.294323, 0, -0.955705, 0, 1, 0, 0.955705, 0, -0.294323, 347.166, 0.27136, 133.831)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage34"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage34" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage35" type="Area3D" parent="Rintangan"]
+transform = Transform3D(-0.294323, 0, -0.955705, 0, 1, 0, 0.955705, 0, -0.294323, 348.434, 0.27136, 133.193)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage35"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage35" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage36" type="Area3D" parent="Rintangan"]
+transform = Transform3D(-0.294323, 0, -0.955705, 0, 1, 0, 0.955705, 0, -0.294323, 350.04, 0.27136, 132.926)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage36"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage36" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage37" type="Area3D" parent="Rintangan"]
+transform = Transform3D(-0.294323, 0, -0.955705, 0, 1, 0, 0.955705, 0, -0.294323, 351.309, 0.27136, 132.287)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage37"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage37" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage38" type="Area3D" parent="Rintangan"]
+transform = Transform3D(-0.294323, 0, -0.955705, 0, 1, 0, 0.955705, 0, -0.294323, 341.193, 0.27136, 135.984)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage38"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage38" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage39" type="Area3D" parent="Rintangan"]
+transform = Transform3D(-0.294323, 0, -0.955705, 0, 1, 0, 0.955705, 0, -0.294323, 342.462, 0.27136, 135.346)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage39"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage39" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage40" type="Area3D" parent="Rintangan"]
+transform = Transform3D(-0.294323, 0, -0.955705, 0, 1, 0, 0.955705, 0, -0.294323, 344.068, 0.27136, 135.079)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage40"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage40" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage41" type="Area3D" parent="Rintangan"]
+transform = Transform3D(-0.294323, 0, -0.955705, 0, 1, 0, 0.955705, 0, -0.294323, 345.337, 0.27136, 134.44)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage41"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage41" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage18" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.279063, 0.0186779, -0.96009, 0.105829, 0.993123, 0.0500811, 0.954422, -0.115582, 0.275167, 415.366, 0.182822, 178.983)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage18"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage18" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage19" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.279063, 0.0186779, -0.96009, 0.105829, 0.993123, 0.0500811, 0.954422, -0.115582, 0.275167, 416.075, 0.0274374, 177.763)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage19"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage19" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage20" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.279063, 0.0186779, -0.96009, 0.105829, 0.993123, 0.0500811, 0.954422, -0.115582, 0.275167, 417.27, -0.122555, 176.667)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage20"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage20" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage21" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.279063, 0.0186779, -0.96009, 0.105829, 0.993123, 0.0500811, 0.954422, -0.115582, 0.275167, 417.979, -0.277936, 175.447)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage21"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage21" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage22" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.279063, 0.0186779, -0.96009, 0.105829, 0.993123, 0.0500811, 0.954422, -0.115582, 0.275167, 411.559, 0.840708, 184.021)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage22"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage22" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage23" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.279063, 0.0186779, -0.96009, 0.105829, 0.993123, 0.0500811, 0.954422, -0.115582, 0.275167, 412.268, 0.685326, 182.801)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage23"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage23" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage24" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.279063, 0.0186779, -0.96009, 0.105829, 0.993123, 0.0500811, 0.954422, -0.115582, 0.275167, 413.463, 0.535334, 181.705)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage24"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage24" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="ObstacleDamage25" type="Area3D" parent="Rintangan"]
+transform = Transform3D(0.279063, 0.0186779, -0.96009, 0.105829, 0.993123, 0.0500811, 0.954422, -0.115582, 0.275167, 414.172, 0.37995, 180.484)
+script = ExtResource("11_co46j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rintangan/ObstacleDamage25"]
+shape = SubResource("BoxShape3D_b4r4v")
+
+[node name="Sketchfab_Scene" parent="Rintangan/ObstacleDamage25" instance=ExtResource("15_6eg5h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

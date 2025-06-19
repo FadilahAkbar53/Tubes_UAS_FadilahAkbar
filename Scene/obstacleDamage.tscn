@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://klijwac6nljx"]
+
+[ext_resource type="Script" path="res://Scripts/ObstacleDamage.cs" id="1_xm2m4"]
+[ext_resource type="PackedScene" uid="uid://bsgpvo56kyfd6" path="res://Assets/Objects/Trap/spike_trap_01.glb" id="2_wndvd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_smi1v"]
+size = Vector3(1, 0.5, 1)
+
+[node name="ObstacleDamage2" type="Area3D"]
+transform = Transform3D(0.808349, 0, -0.588702, 0, 1, 0, 0.588702, 0, 0.808349, 0, 0, 0)
+script = ExtResource("1_xm2m4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_smi1v")
+
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("2_wndvd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
